@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{1CCAF524-8335-44B4-A289-9708FA70D6D2}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E2A0566F-B4EA-4B68-81FC-991364C9D5A9}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Build.targets = src\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DDD75627-3572-45A0-B057-94D5FA523584}"
+	ProjectSection(SolutionItems) = preProject
+		tests\coverlet.runsettings = tests\coverlet.runsettings
+		tests\Directory.Build.props = tests\Directory.Build.props
+		tests\Directory.Build.targets = tests\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageSharp.Interactive", "src\ImageSharp.Interactive\ImageSharp.Interactive.csproj", "{01AD3011-CBD5-4027-918A-F44646EC8D20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSharp.Interactive.Tests", "tests\ImageSharp.Interactive.Tests\ImageSharp.Interactive.Tests.csproj", "{97E96F09-E465-4D7D-BB46-0C5494367D30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01AD3011-CBD5-4027-918A-F44646EC8D20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01AD3011-CBD5-4027-918A-F44646EC8D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01AD3011-CBD5-4027-918A-F44646EC8D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01AD3011-CBD5-4027-918A-F44646EC8D20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E96F09-E465-4D7D-BB46-0C5494367D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E96F09-E465-4D7D-BB46-0C5494367D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E96F09-E465-4D7D-BB46-0C5494367D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E96F09-E465-4D7D-BB46-0C5494367D30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01AD3011-CBD5-4027-918A-F44646EC8D20} = {E2A0566F-B4EA-4B68-81FC-991364C9D5A9}
+		{97E96F09-E465-4D7D-BB46-0C5494367D30} = {DDD75627-3572-45A0-B057-94D5FA523584}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B3766E0-3B65-48E6-9C69-4259C392F12F}
+	EndGlobalSection
+EndGlobal
