@@ -1,4 +1,3 @@
-# SixLabors.ImageSharp.Interactive
 <h1 align="center">
 
 <img src="https://github.com/SixLabors/Branding/raw/master/icons/imagesharp/sixlabors.imagesharp.svg?sanitize=true" alt="SixLabors.ImageSharp" width="256"/>
