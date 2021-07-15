@@ -3,15 +3,13 @@
 
 using System;
 using System.Threading.Tasks;
+using AngleSharp.Dom;
+using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
-using FluentAssertions;
-using FluentAssertions.Execution;
 using Microsoft.DotNet.Interactive.Formatting;
 using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.Interactive;
 using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
 using Xunit;
 
 namespace ImageSharp.Interactive.Tests
@@ -21,39 +19,33 @@ namespace ImageSharp.Interactive.Tests
         public FormatterTests() => KernelExtension.RegisterFormatters();
 
         [Fact]
-        public async Task Formats_image_as_png()
+        public async Task ImageIsFormattedAsPng()
         {
-            var image = new Image<Rgb24>(100, 100);
+            using var image = new Image<Rgb24>(Configuration.Default, 400, 400, Color.Black);
             string html = image.ToDisplayString(HtmlFormatter.MimeType);
             var parser = new HtmlParser();
-            AngleSharp.Html.Dom.IHtmlDocument document = await parser.ParseDocumentAsync(html);
-            AngleSharp.Dom.IElement img = document.QuerySelector("img");
-            using var _ = new AssertionScope();
-
-            img.Should().NotBeNull();
-            img.Attributes["src"].Value.Should().Contain("data:image/png;base64,");
+            IHtmlDocument document = await parser.ParseDocumentAsync(html);
+            IElement img = document.QuerySelector("img");
+            Assert.NotNull(img);
+            Assert.Contains("data:image/png;base64,", img.Attributes["src"].Value);
         }
 
         [Fact]
-        public async Task Formats_images_with_multiple_frames_as_gif()
+        public async Task AnImageWithMultipleFramesIsFormattedAsGif()
         {
-            var image = new Image<Rgba32>(400, 400);
-            image.Mutate(context => context.Fill(Color.Coral));
+            using var image = new Image<Rgba32>(Configuration.Default, 400, 400, Color.Coral);
             for (int i = 0; i < 10; ++i)
             {
-                var frame = new Image<Rgba32>(400, 400);
-                frame.Mutate(x => x.Fill(Color.Black));
+                var frame = new Image<Rgba32>(Configuration.Default, 400, 400, Color.Black);
                 image.Frames.AddFrame(frame.Frames[0]);
             }
 
             string html = image.ToDisplayString(HtmlFormatter.MimeType);
             var parser = new HtmlParser();
-            AngleSharp.Html.Dom.IHtmlDocument document = await parser.ParseDocumentAsync(html);
-            AngleSharp.Dom.IElement img = document.QuerySelector("img");
-            using var _ = new AssertionScope();
-
-            img.Should().NotBeNull();
-            img.Attributes["src"].Value.Should().Contain("data:image/gif;base64,");
+            IHtmlDocument document = await parser.ParseDocumentAsync(html);
+            IElement img = document.QuerySelector("img");
+            Assert.NotNull(img);
+            Assert.Contains("data:image/gif;base64,", img.Attributes["src"].Value);
         }
 
         public void Dispose() => Formatter.ResetToDefault();
