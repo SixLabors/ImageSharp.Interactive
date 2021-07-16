@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Commands;
 using Microsoft.DotNet.Interactive.Formatting;
-using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Gif;
 using SixLabors.ImageSharp.Formats.Png;
 
-namespace ImageSharp.Interactive
+namespace SixLabors.ImageSharp.Interactive
 {
     /// <summary>
     /// A <see cref="IKernelExtension"/> implementation adding support for ImageSharp images.
@@ -21,13 +20,7 @@ namespace ImageSharp.Interactive
         /// <inheritdoc/>
         public Task OnLoadAsync(Kernel kernel)
         {
-            Formatter.Register<Image>(
-                (image, writer) =>
-            {
-                string id = Guid.NewGuid().ToString("N");
-                PocketView imgTag = CreateImgTag(image, id, image.Height, image.Width);
-                writer.Write(imgTag);
-            }, HtmlFormatter.MimeType);
+            RegisterFormatters();
 
             return kernel.SendAsync(
                 new DisplayValue(new FormattedValue(
@@ -35,12 +28,24 @@ namespace ImageSharp.Interactive
                     $"Added support for SixLabors.ImageSharp to kernel {kernel.Name}.")));
         }
 
+        /// <summary>
+        /// Registers the formatters.
+        /// </summary>
+        public static void RegisterFormatters() => Formatter.Register<Image>(
+                (image, writer) =>
+                {
+                    var id = Guid.NewGuid().ToString("N");
+                    PocketView imgTag = CreateImgTag(image, id, image.Height, image.Width);
+                    writer.Write(imgTag);
+                }, HtmlFormatter.MimeType);
+
         private static PocketView CreateImgTag(Image image, string id, int height, int width)
         {
             IImageFormat format = image.Frames.Count > 1
                 ? (IImageFormat)GifFormat.Instance
                 : PngFormat.Instance;
-            string imageSource = image.ToBase64String(format);
+
+            var imageSource = image.ToBase64String(format);
 
             return (PocketView)PocketViewTags.img[id: id, src: imageSource, height: height, width: width]();
         }
