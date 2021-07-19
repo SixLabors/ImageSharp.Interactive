@@ -14,5 +14,16 @@ SixLabors.ImageSharp.Interactive
 
 </div>
 
-### A [.NET Interactive](https://github.com/dotnet/interactive/) implementation using ImageSharp
+### A [.NET Interactive](https://github.com/dotnet/interactive/) extension for ImageSharp
+
+Load the nuget pacakge and then you can display images
+```csharp --project
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Interactive;
+using SixLabors.ImageSharp.PixelFormats;
+
+var image = new Image<Rgb24>(100, 100);
+image.Mutate(c => c.BackgroundColor(Color.AliceBlue));
+image.Display(); 
+```
 

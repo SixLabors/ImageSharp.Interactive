@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.16.0" />
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta13" />
+  </ItemGroup>
+
 </Project>
