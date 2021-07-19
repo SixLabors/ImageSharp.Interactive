@@ -10,6 +10,7 @@
     <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://github.com/SixLabors/ImageSharp.Interactive/</RepositoryUrl>
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <NoWarn>NU5100</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
