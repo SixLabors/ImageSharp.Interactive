@@ -5,8 +5,12 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{1CCAF524-8335-44B4-A289-9708FA70D6D2}"
 	ProjectSection(SolutionItems) = preProject
+		ci-build.ps1 = ci-build.ps1
+		ci-pack.ps1 = ci-pack.ps1
+		ci-test.ps1 = ci-test.ps1
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -25,7 +29,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DDD75627
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageSharp.Interactive", "src\ImageSharp.Interactive\ImageSharp.Interactive.csproj", "{01AD3011-CBD5-4027-918A-F44646EC8D20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSharp.Interactive.Tests", "tests\ImageSharp.Interactive.Tests\ImageSharp.Interactive.Tests.csproj", "{97E96F09-E465-4D7D-BB46-0C5494367D30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageSharp.Interactive.Tests", "tests\ImageSharp.Interactive.Tests\ImageSharp.Interactive.Tests.csproj", "{97E96F09-E465-4D7D-BB46-0C5494367D30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{613DA98D-B062-442D-BA80-65EEB6DF2CEB}"
+	ProjectSection(SolutionItems) = preProject
+		.github\CONTRIBUTING.md = .github\CONTRIBUTING.md
+		.github\PULL_REQUEST_TEMPLATE.md = .github\PULL_REQUEST_TEMPLATE.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{2DCAD584-76BA-4F65-9B70-F4AB54D404A6}"
+	ProjectSection(SolutionItems) = preProject
+		.github\ISSUE_TEMPLATE\commercial-bug-report.md = .github\ISSUE_TEMPLATE\commercial-bug-report.md
+		.github\ISSUE_TEMPLATE\config.yml = .github\ISSUE_TEMPLATE\config.yml
+		.github\ISSUE_TEMPLATE\oss-bug-report.md = .github\ISSUE_TEMPLATE\oss-bug-report.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{293DFA1F-A27B-4AEA-9CA9-CD1316FF7910}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-and-test.yml = .github\workflows\build-and-test.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +70,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{01AD3011-CBD5-4027-918A-F44646EC8D20} = {E2A0566F-B4EA-4B68-81FC-991364C9D5A9}
 		{97E96F09-E465-4D7D-BB46-0C5494367D30} = {DDD75627-3572-45A0-B057-94D5FA523584}
+		{613DA98D-B062-442D-BA80-65EEB6DF2CEB} = {1CCAF524-8335-44B4-A289-9708FA70D6D2}
+		{2DCAD584-76BA-4F65-9B70-F4AB54D404A6} = {613DA98D-B062-442D-BA80-65EEB6DF2CEB}
+		{293DFA1F-A27B-4AEA-9CA9-CD1316FF7910} = {613DA98D-B062-442D-BA80-65EEB6DF2CEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B3766E0-3B65-48E6-9C69-4259C392F12F}
