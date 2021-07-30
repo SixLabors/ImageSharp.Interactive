@@ -16,14 +16,6 @@ SixLabors.ImageSharp.Interactive
 
 ### A [.NET Interactive](https://github.com/dotnet/interactive/) extension for ImageSharp
 
-Load the nuget pacakge and then you can display images
-```csharp --project
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Interactive;
-using SixLabors.ImageSharp.PixelFormats;
-
-using var image = new Image<Rgb24>(100, 100);
-image.Mutate(c => c.BackgroundColor(Color.AliceBlue));
-image.Display(); 
-```
+This package provides extension for using [ImageSharp](https://github.com/SixLabors/ImageSharp) with .NET Interactive notebooks.
+The extension will provide formatters for common types. 
 
