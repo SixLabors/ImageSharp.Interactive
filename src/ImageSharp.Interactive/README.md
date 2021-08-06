@@ -9,7 +9,7 @@ using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 ```
 
-Create and diplay an image, this extension registers formatters for the `Imaqge` type.
+Create and diplay an image, this extension registers formatters for the `Image` type.
 
 ```csharp --project
 var image = new Image<Rgba32>(100, 100);
@@ -28,7 +28,7 @@ using System.Net.Http;
 var httpClient = new HttpClient();
 var response = await httpClient.GetAsync("https://raw.githubusercontent.com/SixLabors/Branding/master/icons/imagesharp/sixlabors.imagesharp.png");
 var inputStream = await response.Content.ReadAsStreamAsync();
-var image = Image.Load(inputStream);
+image = Image.Load(inputStream);
 image.Display();
 ```
 
