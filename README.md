@@ -16,7 +16,7 @@ SixLabors.ImageSharp.Interactive
 
 ### A [.NET Interactive](https://github.com/dotnet/interactive/) extension for ImageSharp
 
-Load the nuget pacakge and then you can display images
+Load the nuget package and then you can display images
 ```csharp --project
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Interactive;
