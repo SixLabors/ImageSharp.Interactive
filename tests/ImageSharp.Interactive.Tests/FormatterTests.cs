@@ -37,7 +37,7 @@ namespace ImageSharp.Interactive.Tests
             string html = color.ToDisplayString(HtmlFormatter.MimeType);
             var parser = new HtmlParser();
             IHtmlDocument document = await parser.ParseDocumentAsync(html);
-            IElement img = document.QuerySelector("table img");
+            IElement img = document.QuerySelector("div img");
             Assert.NotNull(img);
             Assert.Contains("data:image/png;base64,", img.Attributes["src"].Value);
         }

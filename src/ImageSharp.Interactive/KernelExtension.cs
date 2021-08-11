@@ -47,7 +47,6 @@ namespace SixLabors.ImageSharp.Interactive
                 (color, writer) =>
                 {
                     var img = new Image<Rgba32>(36, 24, color);
-
                     string id = Guid.NewGuid().ToString("N");
                     PocketView imgTag = CreateImgTag(img, id, img.Height, img.Width);
                     img.Dispose();
@@ -55,8 +54,7 @@ namespace SixLabors.ImageSharp.Interactive
                         td[style: "vertical-align:middle"](
                             div[style: $"height: {img.Height}px; width: {img.Width}px; border-style:solid; border-width:thin; border-color:rgb(126,126,126)"](
                                 imgTag)),
-                        td[style: "vertical-align:middle"](color.ToString())))
-                    );
+                        td[style: "vertical-align:middle"](color.ToString()))));
                     writer.Write(colorSwatch.ToDisplayString());
                 }, HtmlFormatter.MimeType);
         }
