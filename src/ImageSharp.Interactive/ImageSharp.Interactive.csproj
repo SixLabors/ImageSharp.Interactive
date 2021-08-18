@@ -10,6 +10,7 @@
     <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://github.com/SixLabors/ImageSharp.Interactive/</RepositoryUrl>
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <NoWarn>NU5100</NoWarn>
   </PropertyGroup>
 
@@ -22,13 +23,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21357.1" />
-    <PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21357.1" />
+    <PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21404.3" />
+    <PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21404.3" />
     <PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="$(OutputPath)/SixLabors.ImageSharp.Interactive.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+    <None Include=".\README.md" Pack="true" PackagePath="\" />
+     
   </ItemGroup>
 
 

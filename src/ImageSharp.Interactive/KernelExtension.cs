@@ -9,6 +9,8 @@ using Microsoft.DotNet.Interactive.Formatting;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Gif;
 using SixLabors.ImageSharp.Formats.Png;
+using SixLabors.ImageSharp.PixelFormats;
+using static Microsoft.DotNet.Interactive.Formatting.PocketViewTags;
 
 namespace SixLabors.ImageSharp.Interactive
 {
@@ -31,13 +33,31 @@ namespace SixLabors.ImageSharp.Interactive
         /// <summary>
         /// Registers the formatters.
         /// </summary>
-        public static void RegisterFormatters() => Formatter.Register<Image>(
+        public static void RegisterFormatters()
+        {
+            Formatter.Register<Image>(
                 (image, writer) =>
                 {
-                    var id = Guid.NewGuid().ToString("N");
+                    string id = Guid.NewGuid().ToString("N");
                     PocketView imgTag = CreateImgTag(image, id, image.Height, image.Width);
                     writer.Write(imgTag);
                 }, HtmlFormatter.MimeType);
+
+            Formatter.Register<Color>(
+                (color, writer) =>
+                {
+                    var img = new Image<Rgba32>(36, 24, color);
+                    string id = Guid.NewGuid().ToString("N");
+                    PocketView imgTag = CreateImgTag(img, id, img.Height, img.Width);
+                    img.Dispose();
+                    PocketView colorSwatch = div(table(tr(
+                        td[style: "vertical-align:middle"](
+                            div[style: $"height: {img.Height}px; width: {img.Width}px; border-style:solid; border-width:thin; border-color:rgb(126,126,126)"](
+                                imgTag)),
+                        td[style: "vertical-align:middle"](color.ToString()))));
+                    writer.Write(colorSwatch.ToDisplayString());
+                }, HtmlFormatter.MimeType);
+        }
 
         private static PocketView CreateImgTag(Image image, string id, int height, int width)
         {
@@ -45,7 +65,7 @@ namespace SixLabors.ImageSharp.Interactive
                 ? (IImageFormat)GifFormat.Instance
                 : PngFormat.Instance;
 
-            var imageSource = image.ToBase64String(format);
+            string imageSource = image.ToBase64String(format);
 
             return (PocketView)PocketViewTags.img[id: id, src: imageSource, height: height, width: width]();
         }

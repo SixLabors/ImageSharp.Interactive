@@ -31,6 +31,18 @@ namespace ImageSharp.Interactive.Tests
         }
 
         [Fact]
+        public async Task ColorIsFormattedAsTable()
+        {
+            Color color = Color.Red;
+            string html = color.ToDisplayString(HtmlFormatter.MimeType);
+            var parser = new HtmlParser();
+            IHtmlDocument document = await parser.ParseDocumentAsync(html);
+            IElement img = document.QuerySelector("div img");
+            Assert.NotNull(img);
+            Assert.Contains("data:image/png;base64,", img.Attributes["src"].Value);
+        }
+
+        [Fact]
         public async Task AnImageWithMultipleFramesIsFormattedAsGif()
         {
             using var image = new Image<Rgba32>(Configuration.Default, 400, 400, Color.Coral);
