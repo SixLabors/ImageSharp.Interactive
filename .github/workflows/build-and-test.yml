@@ -15,15 +15,15 @@ jobs:
             matrix:
                 options:
                     - os: ubuntu-latest
-                      framework: netcoreapp3.1
+                      framework: net5.0 
                       runtime: -x64
                       codecov: false
                     - os: macos-latest
-                      framework: netcoreapp3.1
+                      framework: net5.0 
                       runtime: -x64
                       codecov: false
                     - os: windows-latest
-                      framework: netcoreapp3.1
+                      framework: net5.0 
                       runtime: -x64
                       codecov: true
 
