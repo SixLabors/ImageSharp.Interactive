@@ -26,7 +26,7 @@ using System.Net.Http;
 
 
 var httpClient = new HttpClient();
-var response = await httpClient.GetAsync("https://raw.githubusercontent.com/SixLabors/Branding/master/icons/imagesharp/sixlabors.imagesharp.png");
+var response = await httpClient.GetAsync("https://raw.githubusercontent.com/SixLabors/Branding/main/icons/imagesharp/sixlabors.imagesharp.png");
 var inputStream = await response.Content.ReadAsStreamAsync();
 image = Image.Load(inputStream);
 image.Display();
